@@ -1,0 +1,11 @@
+-- Insert sample cattle data with cattle numbers
+INSERT INTO cattle (cattle_number, name, breed, weight, age, price, description, images, video_url, location, status) VALUES
+(1, 'ব্রাহমা বুল - প্রিমিয়াম', 'ব্রাহমা', 480, 3, 280000, 'প্রিমিয়াম মানের ব্রাহমা জাতের বুল। অত্যন্ত স্বাস্থ্যবান এবং সুগঠিত। কুরবানির জন্য আদর্শ।', ARRAY['/.jpg?height=600&width=800&query=premium brahman bull cattle'], 'https://example.com/video1.mp4', 'ঢাকা', 'available'),
+(2, 'দেশি গরু - স্বাস্থ্যবান', 'দেশি', 380, 2.5, 180000, 'স্বাস্থ্যবান দেশি জাতের গরু। ভালো মাংসের জন্য পরিচিত।', ARRAY['/.jpg?height=600&width=800&query=healthy local bengali cattle'], 'https://example.com/video2.mp4', 'চট্টগ্রাম', 'available'),
+(3, 'সিন্ধি গরু - উন্নত জাত', 'সিন্ধি', 420, 3, 220000, 'উন্নত জাতের সিন্ধি গরু। দ্রুত বৃদ্ধি এবং ভালো মাংসের জন্য পরিচিত।', ARRAY['/.jpg?height=600&width=800&query=sindhi cattle breed'], NULL, 'সিলেট', 'available'),
+(4, 'সাহিওয়াল বুল', 'সাহিওয়াল', 450, 3.5, 250000, 'সাহিওয়াল জাতের শক্তিশালী বুল। উচ্চ মানের মাংস এবং চমৎকার গঠন।', ARRAY['/.jpg?height=600&width=800&query=sahiwal bull cattle'], 'https://example.com/video4.mp4', 'রাজশাহী', 'available'),
+(5, 'ব্রাহমা ক্রস', 'ব্রাহমা', 410, 2.5, 210000, 'ব্রাহমা ক্রস জাতের গরু। ভালো ওজন এবং স্বাস্থ্যবান।', ARRAY['/.jpg?height=600&width=800&query=brahman cross cattle'], NULL, 'খুলনা', 'available'),
+(6, 'দেশি গরু - বড় সাইজ', 'দেশি', 430, 3, 200000, 'বড় সাইজের দেশি গরু। কুরবানির জন্য উপযুক্ত।', ARRAY['/.jpg?height=600&width=800&query=large local bengali cattle'], 'https://example.com/video6.mp4', 'বরিশাল', 'available'),
+(7, 'সিন্ধি প্রিমিয়াম', 'সিন্ধি', 460, 3.5, 260000, 'প্রিমিয়াম মানের সিন্ধি জাতের গরু। চমৎকার গঠন এবং স্বাস্থ্য।', ARRAY['/.jpg?height=600&width=800&query=premium sindhi cattle'], 'https://example.com/video7.mp4', 'ময়মনসিংহ', 'available'),
+(8, 'সাহিওয়াল স্ট্যান্ডার্ড', 'সাহিওয়াল', 390, 2.5, 190000, 'স্ট্যান্ডার্ড মানের সাহিওয়াল গরু। ভালো দামে উপলব্ধ।', ARRAY['/.jpg?height=600&width=800&query=standard sahiwal cattle'], NULL, 'রংপুর', 'available'),
+(9, 'ব্রাহমা হেভিওয়েট', 'ব্রাহমা', 520, 4, 320000, 'হেভিওয়েট ব্রাহমা জাতের গরু। সর্বোচ্চ ওজন এবং প্রিমিয়াম মান।', ARRAY['/.jpg?height=600&width=800&query=heavyweight brahman cattle'], 'https://example.com/video9.mp4', 'ঢাকা', 'available');

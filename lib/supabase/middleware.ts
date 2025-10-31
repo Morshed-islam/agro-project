@@ -44,17 +44,35 @@ export async function updateSession(request: NextRequest) {
     }
   }
 
-  // Protect admin routes
   if (request.nextUrl.pathname.startsWith("/admin") && !request.nextUrl.pathname.startsWith("/admin/login")) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = "/admin/login"
       return NextResponse.redirect(url)
     }
+
+    // Check if user is an investor (has investor_profile)
+    const { data: investorProfile } = await supabase.from("investor_profiles").select("id").eq("id", user.id).single()
+
+    // If user is an investor, redirect them to investor profile
+    if (investorProfile) {
+      const url = request.nextUrl.clone()
+      url.pathname = "/investor/profile"
+      return NextResponse.redirect(url)
+    }
   }
 
   // Redirect to dashboard if already logged in and trying to access login
   if (request.nextUrl.pathname === "/admin/login" && user) {
+    const { data: investorProfile } = await supabase.from("investor_profiles").select("id").eq("id", user.id).single()
+
+    // If user is an investor, redirect to investor profile instead
+    if (investorProfile) {
+      const url = request.nextUrl.clone()
+      url.pathname = "/investor/profile"
+      return NextResponse.redirect(url)
+    }
+
     const url = request.nextUrl.clone()
     url.pathname = "/admin/dashboard"
     return NextResponse.redirect(url)

@@ -51,8 +51,11 @@ export async function updateSession(request: NextRequest) {
       return NextResponse.redirect(url)
     }
 
-    // Check if user is an investor (has investor_profile)
-    const { data: investorProfile } = await supabase.from("investor_profiles").select("id").eq("id", user.id).single()
+    const { data: investorProfile } = await supabase
+      .from("investor_profiles")
+      .select("id")
+      .eq("id", user.id)
+      .maybeSingle()
 
     // If user is an investor, redirect them to investor profile
     if (investorProfile) {
@@ -64,7 +67,11 @@ export async function updateSession(request: NextRequest) {
 
   // Redirect to dashboard if already logged in and trying to access login
   if (request.nextUrl.pathname === "/admin/login" && user) {
-    const { data: investorProfile } = await supabase.from("investor_profiles").select("id").eq("id", user.id).single()
+    const { data: investorProfile } = await supabase
+      .from("investor_profiles")
+      .select("id")
+      .eq("id", user.id)
+      .maybeSingle()
 
     // If user is an investor, redirect to investor profile instead
     if (investorProfile) {

@@ -6,11 +6,13 @@ import { revalidatePath } from "next/cache"
 export async function updateInvestmentStatus(investmentId: string, newStatus: string) {
   const supabase = await createClient()
 
-  // Validate status
-  const validStatuses = ["pending", "approved", "unpaid", "paid"]
+  const validStatuses = ["pending", "approved", "unpaid", "paid", "rejected"]
   if (!validStatuses.includes(newStatus)) {
+    console.error("[v0] Invalid status attempted:", newStatus)
     return { success: false, error: "Invalid status" }
   }
+
+  console.log("[v0] Updating investment", investmentId, "to status:", newStatus)
 
   // Update investment status
   const { error } = await supabase.from("investments").update({ status: newStatus }).eq("id", investmentId)
@@ -19,6 +21,8 @@ export async function updateInvestmentStatus(investmentId: string, newStatus: st
     console.error("[v0] Error updating investment status:", error)
     return { success: false, error: error.message }
   }
+
+  console.log("[v0] Successfully updated investment status")
 
   // If status is changed to 'approved' or 'paid', update project's raised amount
   if (newStatus === "approved" || newStatus === "paid") {
